@@ -57,6 +57,9 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.2.0
+      '@storybook/addon-coverage':
+        specifier: ^1.0.5
+        version: 1.0.5
       '@storybook/addon-essentials':
         specifier: ^8.4.7
         version: 8.4.7(@types/react@19.0.2)(storybook@8.4.7)
@@ -1183,6 +1186,9 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@jsdevtools/coverage-istanbul-loader@3.0.5':
+    resolution: {integrity: sha512-EUCPEkaRPvmHjWAAZkWMT7JDzpw7FKB00WTISaiXsbNOd5hCHg77XLA8sLYLFDo1zepYLo2w7GstN8YBqRXZfA==}
+
   '@mdx-js/react@3.1.0':
     resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
     peerDependencies:
@@ -1371,6 +1377,9 @@ packages:
     resolution: {integrity: sha512-377uo5IsJgXLnQLJixa47+11V+7Wn9KcDEw+96aGCBCfLbWNH8S08tJHHnSu+jXg9zoqCAC23MetntVp6LetHA==}
     peerDependencies:
       storybook: ^8.4.7
+
+  '@storybook/addon-coverage@1.0.5':
+    resolution: {integrity: sha512-EMa5vMJFVZJjp6MKJUa/aAfaw833eQ8/y6BHB2sMnvdwztV9DHMGtA1fXAPFwqOo81q8og0+7e47z1oHPsbk4Q==}
 
   '@storybook/addon-docs@8.4.7':
     resolution: {integrity: sha512-NwWaiTDT5puCBSUOVuf6ME7Zsbwz7Y79WF5tMZBx/sLQ60vpmJVQsap6NSjvK1Ravhc21EsIXqemAcBjAWu80w==}
@@ -2845,6 +2854,10 @@ packages:
     resolution: {integrity: sha512-0QYC8b24HWY8zjRnDTL6RiHfDbAWn63qb4LMj1Z4b076A4une81+z03Kg7l7mn/48PUTqoLptSXez8oknU8Clg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  espree@9.6.1:
+    resolution: {integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
   esprima@4.0.1:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
     engines: {node: '>=4'}
@@ -3835,6 +3848,9 @@ packages:
   memoizerific@1.11.3:
     resolution: {integrity: sha512-/EuHYwAPdLtXwAwSZkh/Gutery6pD2KYd44oQLhAvQp/50mpyduZh8Q7PYHXTCJ+wuXxt7oij2LXyIJOOYFPog==}
 
+  merge-source-map@1.1.0:
+    resolution: {integrity: sha512-Qkcp7P2ygktpMPh2mCQZaf3jhN6D3Z/qVZHSdWvQ+2Ef5HgRAPBO57A77+ENm0CPx2+1Ce/MYKi3ymqdfuqibw==}
+
   merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
 
@@ -4587,6 +4603,10 @@ packages:
   scheduler@0.25.0:
     resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
 
+  schema-utils@2.7.1:
+    resolution: {integrity: sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg==}
+    engines: {node: '>= 8.9.0'}
+
   schema-utils@3.3.0:
     resolution: {integrity: sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg==}
     engines: {node: '>= 10.13.0'}
@@ -5076,6 +5096,9 @@ packages:
   v8-to-istanbul@9.3.0:
     resolution: {integrity: sha512-kiGUalWN+rgBJ/1OHZsBtU4rXZOfj/7rKQxULKlIzwzQSvMJUUNgPwJEEh7gU6xEVxC0ahoOBvN2YI8GH6FNgA==}
     engines: {node: '>=10.12.0'}
+
+  vite-plugin-istanbul@3.0.4:
+    resolution: {integrity: sha512-DJy3cq6yOFbsM3gLQf/3zeuaJNJsfBv5dLFdZdv8sUV30xLtZI+66QeYfHUyP/5vBUYyLA+xNUCSG5uHY6w+5g==}
 
   vm-browserify@1.1.2:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
@@ -6496,6 +6519,16 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@jsdevtools/coverage-istanbul-loader@3.0.5':
+    dependencies:
+      convert-source-map: 1.9.0
+      istanbul-lib-instrument: 4.0.3
+      loader-utils: 2.0.4
+      merge-source-map: 1.1.0
+      schema-utils: 2.7.1
+    transitivePeerDependencies:
+      - supports-color
+
   '@mdx-js/react@3.1.0(@types/react@19.0.2)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
@@ -6639,6 +6672,19 @@ snapshots:
       dequal: 2.0.3
       storybook: 8.4.7
       ts-dedent: 2.2.0
+
+  '@storybook/addon-coverage@1.0.5':
+    dependencies:
+      '@istanbuljs/load-nyc-config': 1.1.0
+      '@jsdevtools/coverage-istanbul-loader': 3.0.5
+      '@types/istanbul-lib-coverage': 2.0.6
+      convert-source-map: 2.0.0
+      espree: 9.6.1
+      istanbul-lib-instrument: 6.0.3
+      test-exclude: 6.0.0
+      vite-plugin-istanbul: 3.0.4
+    transitivePeerDependencies:
+      - supports-color
 
   '@storybook/addon-docs@8.4.7(@types/react@19.0.2)(storybook@8.4.7)':
     dependencies:
@@ -8622,6 +8668,12 @@ snapshots:
       acorn-jsx: 5.3.2(acorn@8.14.0)
       eslint-visitor-keys: 4.2.0
 
+  espree@9.6.1:
+    dependencies:
+      acorn: 8.14.0
+      acorn-jsx: 5.3.2(acorn@8.14.0)
+      eslint-visitor-keys: 3.4.3
+
   esprima@4.0.1: {}
 
   esquery@1.6.0:
@@ -9857,6 +9909,10 @@ snapshots:
     dependencies:
       map-or-similar: 1.5.0
 
+  merge-source-map@1.1.0:
+    dependencies:
+      source-map: 0.6.1
+
   merge-stream@2.0.0: {}
 
   merge2@1.4.1: {}
@@ -10672,6 +10728,12 @@ snapshots:
 
   scheduler@0.25.0: {}
 
+  schema-utils@2.7.1:
+    dependencies:
+      '@types/json-schema': 7.0.15
+      ajv: 6.12.6
+      ajv-keywords: 3.5.2(ajv@6.12.6)
+
   schema-utils@3.3.0:
     dependencies:
       '@types/json-schema': 7.0.15
@@ -11239,6 +11301,15 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.25
       '@types/istanbul-lib-coverage': 2.0.6
       convert-source-map: 2.0.0
+
+  vite-plugin-istanbul@3.0.4:
+    dependencies:
+      '@istanbuljs/load-nyc-config': 1.1.0
+      istanbul-lib-instrument: 5.2.1
+      picocolors: 1.1.1
+      test-exclude: 6.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   vm-browserify@1.1.2: {}
 
