@@ -1,7 +1,7 @@
 import { FormInput } from "@/components/form/form-input"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
-import { useCreateUserForm } from "@/app/users/new/hooks/user-create-user-form"
+import { useCreateUserForm } from "@/app/users/new/hooks/use-create-user-form"
 
 export function UserCreateForm() {
   const { handleSubmit, form } = useCreateUserForm()
