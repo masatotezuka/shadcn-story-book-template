@@ -14,9 +14,14 @@ const createUserSchema = z.object({
     message: "パスワードは8文字以上で入力してください",
   }),
 })
-type CreateUserSchema = z.infer<typeof createUserSchema>
 
-export function useCreateUserForm() {
+export type CreateUserSchema = z.infer<typeof createUserSchema>
+
+type UseCreateUserFormParams = {
+  createUser: (params: CreateUserSchema) => Promise<void>
+}
+
+export function useCreateUserForm({ createUser }: UseCreateUserFormParams) {
   const form = useForm<CreateUserSchema>({
     defaultValues: {
       firstName: "",
@@ -27,8 +32,8 @@ export function useCreateUserForm() {
     resolver: zodResolver(createUserSchema),
   })
 
-  const handleSubmit = form.handleSubmit((data) => {
-    console.log(data)
+  const handleSubmit = form.handleSubmit(async (data) => {
+    await createUser(data)
   })
 
   return { handleSubmit, form }
