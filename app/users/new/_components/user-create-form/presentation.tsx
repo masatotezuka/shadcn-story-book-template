@@ -1,10 +1,21 @@
 import { FormInput } from "@/components/form/form-input"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
-import { useCreateUserForm } from "@/app/users/new/hooks/use-create-user-form"
+import {
+  useCreateUserForm,
+  CreateUserSchema,
+} from "@/app/users/new/hooks/use-create-user-form"
 
-export function UserCreateForm() {
-  const { handleSubmit, form } = useCreateUserForm()
+type UserCreateFormPresentationProps = {
+  createUser: (params: CreateUserSchema) => Promise<void>
+  isLoading: boolean
+}
+
+export function UserCreateFormPresentation({
+  createUser,
+  isLoading,
+}: UserCreateFormPresentationProps) {
+  const { handleSubmit, form } = useCreateUserForm({ createUser })
   return (
     <Form {...form}>
       <form onSubmit={handleSubmit}>
@@ -32,7 +43,9 @@ export function UserCreateForm() {
           </div>
         </div>
         <div className="mt-4 flex justify-end">
-          <Button type="submit">作成</Button>
+          <Button type="submit" disabled={isLoading}>
+            作成
+          </Button>
         </div>
       </form>
     </Form>
