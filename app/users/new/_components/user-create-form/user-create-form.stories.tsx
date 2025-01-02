@@ -1,13 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { UserCreateForm } from "./user-create-form"
+import { UserCreateFormPresentation } from "./presentation"
 import { userEvent, within, expect } from "@storybook/test"
+import { waitFor } from "@testing-library/react"
 
-const meta: Meta<typeof UserCreateForm> = {
+const meta: Meta<typeof UserCreateFormPresentation> = {
   title: "App/Users/New/Components/UserCreateForm",
-  component: UserCreateForm,
+  component: UserCreateFormPresentation,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
+  },
+  args: {
+    createUser: async (params) => {
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(params)
+        }, 1000)
+      })
+    },
+    isLoading: false,
   },
 }
 
@@ -16,6 +27,17 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const EmptyForm: Story = {}
+
+const fillForm: Story["play"] = async ({ canvasElement }) => {
+  const canvas = within(canvasElement)
+  await userEvent.type(canvas.getByLabelText("性"), "山田")
+  await userEvent.type(canvas.getByLabelText("名"), "太郎")
+  await userEvent.type(
+    canvas.getByLabelText("メールアドレス"),
+    "test@example.com"
+  )
+  await userEvent.type(canvas.getByLabelText("パスワード"), "password123")
+}
 
 const fillName: Story["play"] = async ({ canvasElement }) => {
   const canvas = within(canvasElement)
@@ -42,30 +64,37 @@ const submit: Story["play"] = async ({ canvasElement }) => {
 }
 
 export const Valid: Story = {
-  name: "正常入力で送信",
+  name: "正常入力で作成",
   play: async (arg) => {
-    await fillName(arg)
-    await fillEmail(arg)
-    await fillPassword(arg)
+    await fillForm(arg)
     await submit(arg)
   },
 }
 
-export const InvalidName: Story = {
-  name: "名が未入力",
+export const InvalidAllEmpty: Story = {
+  name: "未入力で作成",
   play: async (arg) => {
     const canvas = within(arg.canvasElement)
-    await userEvent.type(canvas.getByLabelText("性"), "山田")
-    await fillEmail(arg)
-    await fillPassword(arg)
-    await submit(arg)
 
-    expect(canvas.getByText("名を入力してください")).toBeInTheDocument()
+    await waitFor(async () => {
+      await submit(arg)
+    })
+
+    await waitFor(() => {
+      expect(canvas.getByText("性を入力してください")).toBeInTheDocument()
+      expect(canvas.getByText("名を入力してください")).toBeInTheDocument()
+      expect(
+        canvas.getByText("パスワードは8文字以上で入力してください")
+      ).toBeInTheDocument()
+      expect(
+        canvas.getByText("メールアドレスが正しくありません")
+      ).toBeInTheDocument()
+    })
   },
 }
 
 export const InvalidEmail: Story = {
-  name: "不正なメールアドレス",
+  name: "不正なメールアドレスを入力",
   play: async (arg) => {
     const canvas = within(arg.canvasElement)
 
@@ -81,7 +110,7 @@ export const InvalidEmail: Story = {
 }
 
 export const InvalidPassword: Story = {
-  name: "不正なパスワード",
+  name: "不正なパスワードを入力",
   play: async (arg) => {
     const canvas = within(arg.canvasElement)
 
