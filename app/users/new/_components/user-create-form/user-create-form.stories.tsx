@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { UserCreateFormPresentation } from "./presentation"
-import { userEvent, within, expect } from "@storybook/test"
+import { userEvent, within, expect, fn } from "@storybook/test"
 import { waitFor } from "@testing-library/react"
 
 const meta: Meta<typeof UserCreateFormPresentation> = {
@@ -65,9 +65,30 @@ const submit: Story["play"] = async ({ canvasElement }) => {
 
 export const Valid: Story = {
   name: "正常入力で作成",
+  args: {
+    createUser: fn(
+      async (params: {
+        firstName: string
+        lastName: string
+        email: string
+        password: string
+      }) => {
+        console.log(params)
+      }
+    ),
+  },
   play: async (arg) => {
     await fillForm(arg)
     await submit(arg)
+
+    await waitFor(() =>
+      expect(arg.args.createUser).toHaveBeenCalledWith({
+        firstName: "山田",
+        lastName: "太郎",
+        email: "test@example.com",
+        password: "password123",
+      })
+    )
   },
 }
 
