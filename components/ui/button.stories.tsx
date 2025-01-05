@@ -78,9 +78,6 @@ export const Secondary: Story = {
     onClick: action("secondary click"),
     children: "Secondary Button",
   },
-  play: () => {
-    console.log("play")
-  },
 }
 
 export const Ghost: Story = {
