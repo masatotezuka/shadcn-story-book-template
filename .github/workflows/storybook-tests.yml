@@ -33,8 +33,6 @@ jobs:
           version: 9
       - name: Install dependencies
         run: pnpm install
-      - name: Install wait-on and concurrently
-        run: pnpm add wait-on concurrently
       - name: Build Storybook
         run: pnpm build-storybook --quiet
       - name: Serve Storybook and run tests
