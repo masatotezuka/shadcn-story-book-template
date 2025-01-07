@@ -64,7 +64,7 @@ const submit: Story["play"] = async ({ canvasElement }) => {
 }
 
 export const Valid: Story = {
-  name: "正常入力で作成",
+  name: "正常な値を入力して作成",
   args: {
     createUser: fn(
       async (params: {
@@ -115,7 +115,7 @@ export const InvalidAllEmpty: Story = {
 }
 
 export const InvalidEmail: Story = {
-  name: "不正なメールアドレスを入力",
+  name: "メールアドレスでない値を入力",
   play: async (arg) => {
     const canvas = within(arg.canvasElement)
 
