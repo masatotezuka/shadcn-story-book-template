@@ -108,7 +108,7 @@ export const InvalidAllEmpty: Story = {
         canvas.getByText("パスワードは8文字以上で入力してください")
       ).toBeInTheDocument()
       expect(
-        canvas.getByText("メールアドレスが正しくありません")
+        canvas.getByText("メールアドレスを入力してください")
       ).toBeInTheDocument()
     })
   },

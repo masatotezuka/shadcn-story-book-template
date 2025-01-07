@@ -8,7 +8,7 @@ const createUserSchema = z.object({
     message: "性を入力してください",
   }),
   email: z.string().email({
-    message: "メールアドレスが正しくありません",
+    message: "メールアドレスを入力してください",
   }),
   password: z.string().min(8, {
     message: "パスワードは8文字以上で入力してください",
