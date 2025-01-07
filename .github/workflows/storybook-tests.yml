@@ -11,14 +11,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      - name: Install dependencies
-        run: pnpm install
-      - name: Install Playwright
-        run: npx playwright install --with-deps
       - name: Cache Playwright
         uses: actions/cache@v3
         with:
@@ -26,6 +18,14 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-playwright-
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Install dependencies
+        run: pnpm install
       - name: Build Storybook
         run: pnpm build-storybook --quiet
       - name: Serve Storybook and run tests
