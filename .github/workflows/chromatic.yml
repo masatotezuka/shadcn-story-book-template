@@ -20,9 +20,7 @@ jobs:
           version: 9
       - name: Install dependencies
         run: pnpm install
-        # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
       - name: Run Chromatic
         uses: chromaui/action@latest
         with:
-          # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
