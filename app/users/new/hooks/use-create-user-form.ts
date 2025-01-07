@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 const createUserSchema = z.object({
-  firstName: z.string().nonempty({ message: "性を入力してください" }),
+  firstName: z.string().nonempty({ message: "名を入力してください" }),
   lastName: z.string().nonempty({
-    message: "名を入力してください",
+    message: "性を入力してください",
   }),
   email: z.string().email({
     message: "メールアドレスが正しくありません",
