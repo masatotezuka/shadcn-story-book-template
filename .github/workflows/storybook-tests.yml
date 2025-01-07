@@ -18,12 +18,23 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
       - name: Install dependencies
         run: pnpm install
+      - name: Install Playwright Browsers
+        run: |
+          export PLAYWRIGHT_BROWSERS_PATH=~/.cache/ms-playwright
+          pnpm exec playwright install --with-deps
       - name: Build Storybook
         run: pnpm build-storybook --quiet
       - name: Serve Storybook and run tests
